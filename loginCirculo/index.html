@@ -28,6 +28,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            transition: width 0.3s, height 0.3s;
         }
 
         .form-container {
@@ -95,6 +96,39 @@
 
         .dark-text {
             color: #004d40;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            .screen {
+                width: 90%;
+                height: 450px;
+            }
+            body {
+                background-color: #b2ebf2;
+            }
+            .form-container h2 {
+                font-size: 24px;
+            }
+            .form-container input, .form-container button {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .screen {
+                width: 95%;
+                height: 400px;
+            }
+            body {
+                background-color: #80deea;
+            }
+            .form-container h2 {
+                font-size: 20px;
+            }
+            .form-container input, .form-container button {
+                width: 75%;
+            }
         }
     </style>
 </head>
