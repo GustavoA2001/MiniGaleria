@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0f7fa;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s;
+        }
+
+        .screen {
+            width: 400px;
+            height: 400px;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container {
+            width: 80%;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            transition: color 0.5s;
+        }
+
+        .form-container input, .form-container button {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #00796b;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-container input:focus {
+            border-color: #004d40;
+            box-shadow: 0 0 5px rgba(0, 77, 64, 0.5);
+            outline: none;
+        }
+
+        .form-container button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .form-container button:hover {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+
+        .circulo {
+            width: 0;
+            height: 0;
+            background-color: #ff7043;
+            border-radius: 50%;
+            position: absolute;
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .expand {
+            width: 600px;
+            height: 600px;
+        }
+
+        .register-text {
+            color: #00796b;
+        }
+
+        .light-text {
+            color: #ffffff;
+        }
+
+        .dark-text {
+            color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen" id="screen">
+        <div class="circulo" id="circulo"></div>
+        <div class="form-container" id="form-container">
+            <div id="login-form">
+                <h2 class="dark-text">Iniciar sesión</h2>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+                <p class="dark-text">¿No tienes una cuenta? <a href="#" class="switch-link" id="negro-enlace">Regístrate</a></p>
+            </div>
+            <div id="register-form" style="display:none;">
+                <h2 class="light-text">Registrarse</h2>
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <input type="password" placeholder="Confirmar contraseña" required>
+                <button type="submit">Registrar</button>
+                <p class="register-text">¿Ya tienes una cuenta? <a href="#" id="switch-login">Inicia sesión</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const negroEnlace = document.getElementById('negro-enlace');
+        const switchLogin = document.getElementById('switch-login');
+        const circulo = document.getElementById('circulo');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const body = document.body;
+
+        function toggleColorAndSize() {
+            const isExpanded = circulo.classList.toggle('expand');
+            body.style.backgroundColor = isExpanded ? '#00796b' : '#e0f7fa';
+        }
+
+        switchLogin.addEventListener('click', () => {
+            toggleColorAndSize();
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+
+        negroEnlace.addEventListener('click', () => {
+            toggleColorAndSize();
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
